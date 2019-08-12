@@ -4,13 +4,13 @@ namespace ProxyFactory.Test
 {
     class ProxyTestClassWithParamConstructor
     {
-        private TestProxy<TestClassWithParamConstructor> TestProxy =>
-            TestProxy<TestClassWithParamConstructor>.Instance;
+        private TestProxy<TestClassWithParamConstructor, TestClassWithParamConstructor> TestProxy =>
+            TestProxy<TestClassWithParamConstructor, TestClassWithParamConstructor>.Instance;
 
         [Test]
         public void TestMethodCall()
         {
-            var test = TestProxy.NewInstance("Test");
+            var test = TestProxy.NewInstance(ProxyFactory.ProxyType.Inheritance, "Test");
 
             test.TestFunctionOne();
 
@@ -20,7 +20,7 @@ namespace ProxyFactory.Test
         [Test]
         public void TestMethodWithParamCall()
         {
-            var test = TestProxy.NewInstance("Test");
+            var test = TestProxy.NewInstance(ProxyFactory.ProxyType.Inheritance, "Test");
 
             test.TestFunctionTwo("Test String");
 
@@ -30,7 +30,7 @@ namespace ProxyFactory.Test
         [Test]
         public void TestMethodWithReturnCall()
         {
-            var test = TestProxy.NewInstance("Test");
+            var test = TestProxy.NewInstance(ProxyFactory.ProxyType.Inheritance, "Test");
 
             var value = test.TestFunctionThree();
 
@@ -40,7 +40,7 @@ namespace ProxyFactory.Test
         [Test]
         public void TestMethodWithParamAndReturnCall()
         {
-            var test = TestProxy.NewInstance("Test");
+            var test = TestProxy.NewInstance(ProxyFactory.ProxyType.Inheritance, "Test");
 
             var value = test.TestFunctionFour("Test String");
 

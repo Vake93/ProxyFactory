@@ -5,13 +5,17 @@ namespace ProxyFactory.Test
 {
     public class ProxyTestClassNoParamConstructor
     {
-        private TestProxy<TestClassNoParamConstructor> TestProxy =>
-            TestProxy<TestClassNoParamConstructor>.Instance;
+        private TestProxy<TestClassNoParamConstructor, TestClassNoParamConstructor> TestProxy =>
+            TestProxy<TestClassNoParamConstructor, TestClassNoParamConstructor>.Instance;
 
         [Test]
         public void TestMethodCall()
         {
-            var test = TestProxy.NewInstance();
+            var test = TestProxy.NewInstance(ProxyFactory.ProxyType.Inheritance);
+
+            test.TestFunctionOne();
+
+            test = TestProxy.NewInstance(ProxyFactory.ProxyType.Inheritance);
 
             test.TestFunctionOne();
 
@@ -21,7 +25,7 @@ namespace ProxyFactory.Test
         [Test]
         public void TestMethodWithParamCall()
         {
-            var test = TestProxy.NewInstance();
+            var test = TestProxy.NewInstance(ProxyFactory.ProxyType.Inheritance);
 
             test.TestFunctionTwo("Test String");
 
@@ -31,7 +35,7 @@ namespace ProxyFactory.Test
         [Test]
         public void TestMethodWithReturnCall()
         {
-            var test = TestProxy.NewInstance();
+            var test = TestProxy.NewInstance(ProxyFactory.ProxyType.Inheritance);
 
             var value = test.TestFunctionThree();
 
@@ -42,7 +46,7 @@ namespace ProxyFactory.Test
         [Test]
         public void TestMethodWithParamAndReturnCall()
         {
-            var test = TestProxy.NewInstance();
+            var test = TestProxy.NewInstance(ProxyFactory.ProxyType.Inheritance);
 
             var value = test.TestFunctionFour("Test String");
 
@@ -53,7 +57,7 @@ namespace ProxyFactory.Test
         [Test]
         public void TestMethodCallException()
         {
-            var test = TestProxy.NewInstance();
+            var test = TestProxy.NewInstance(ProxyFactory.ProxyType.Inheritance);
 
             Assert.Throws(typeof(UnauthorizedAccessException), () => test.TestFunctionFive());
 
@@ -63,7 +67,7 @@ namespace ProxyFactory.Test
         [Test]
         public void TestMethodWithParamCallException()
         {
-            var test = TestProxy.NewInstance();
+            var test = TestProxy.NewInstance(ProxyFactory.ProxyType.Inheritance);
 
             Assert.Throws(typeof(UnauthorizedAccessException), () => test.TestFunctionSix("Test"));
 

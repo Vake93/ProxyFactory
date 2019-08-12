@@ -2,24 +2,25 @@
 
 namespace ProxyFactory.Test
 {
-    public class TestProxy<T> : IProxyInvocationHandler<T>
-        where T : class
+    public class TestProxy<T, K> : IProxyInvocationHandler
+        where T : class, K
+        where K : class
     {
-        public static TestProxy<T> Instance { get; }
+        public static TestProxy<T, K> Instance { get; }
 
         static TestProxy()
         {
-            Instance = new TestProxy<T>();
+            Instance = new TestProxy<T, K>();
         }
 
         private TestProxy()
         {
         }
 
-        public T NewInstance(params object[] args)
+        public K NewInstance(ProxyFactory.ProxyType proxyType, params object[] args)
         {
             var proxy = ProxyFactory.Instance
-                .Create(this, args);
+                .Create<T, K>(this, proxyType, args);
 
             return proxy;
         }
