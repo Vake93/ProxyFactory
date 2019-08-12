@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProxyFactory", "ProxyFactory\ProxyFactory.csproj", "{0B695CE7-E1C2-4418-8DE4-71F0A45A0D8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyFactory.Test", "ProxyFactory.Test\ProxyFactory.Test\ProxyFactory.Test.csproj", "{FD4182FD-E5C7-4628-911E-FB56A0B58858}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B695CE7-E1C2-4418-8DE4-71F0A45A0D8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B695CE7-E1C2-4418-8DE4-71F0A45A0D8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B695CE7-E1C2-4418-8DE4-71F0A45A0D8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B695CE7-E1C2-4418-8DE4-71F0A45A0D8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD4182FD-E5C7-4628-911E-FB56A0B58858}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD4182FD-E5C7-4628-911E-FB56A0B58858}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD4182FD-E5C7-4628-911E-FB56A0B58858}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD4182FD-E5C7-4628-911E-FB56A0B58858}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D63957AD-3046-43E4-8F36-B283056D94B3}
+	EndGlobalSection
+EndGlobal
