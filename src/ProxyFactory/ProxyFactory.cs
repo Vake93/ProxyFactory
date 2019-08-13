@@ -40,7 +40,10 @@ namespace ProxyFactory
             params object[] args)
             where TImplementationType : class
         {
-            return Create<TImplementationType, TImplementationType>(handler, ProxyType.Inheritance, args);
+            return Create<TImplementationType, TImplementationType>(
+                handler,
+                ProxyType.Inheritance,
+                args);
         }
 
         public TBaseType Create<TImplementationType, TBaseType>(
@@ -88,7 +91,12 @@ namespace ProxyFactory
             return (TBaseType)Activator.CreateInstance(type, args);
         }
 
-        private Type BuildType<TImplementationType, TBaseType>(IProxyInvocationHandler handler, ProxyType proxyType, Type objectType, string typeName, object[] args)
+        private Type BuildType<TImplementationType, TBaseType>(
+            IProxyInvocationHandler handler,
+            ProxyType proxyType,
+            Type objectType,
+            string typeName,
+            object[] args)
             where TImplementationType : class, TBaseType
             where TBaseType : class
         {
@@ -177,7 +185,11 @@ namespace ProxyFactory
 
             foreach (var interfaceType in interfaces)
             {
-                GenerateInterfaceMethods<TImplementationType>(interfaceType, handlerField, objectReferenceFeild, typeBuilder);
+                GenerateInterfaceMethods<TImplementationType>(
+                    interfaceType,
+                    handlerField,
+                    objectReferenceFeild,
+                    typeBuilder);
             }
 
             return typeBuilder.CreateType();
@@ -227,8 +239,7 @@ namespace ProxyFactory
                     methodIL.Emit(OpCodes.Ldarg_S, j + 1);
                 }
 
-                //Not Callvirt since this is a call to base method
-                methodIL.Emit(OpCodes.Callvirt, baseType.GetMethod(methodInfo.Name, methodParameters));
+                methodIL.Emit(OpCodes.Callvirt, methodInfo);
 
                 methodIL.Emit(OpCodes.Ret);
                 #endregion
@@ -240,7 +251,11 @@ namespace ProxyFactory
             {
                 foreach (var parentType in parentTypes)
                 {
-                    GenerateInterfaceMethods<TImplementationType>(parentType, handlerField, objectReferenceFeild, typeBuilder);
+                    GenerateInterfaceMethods<TImplementationType>(
+                        parentType,
+                        handlerField,
+                        objectReferenceFeild,
+                        typeBuilder);
                 }
             }
         }
